@@ -1,0 +1,161 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/light.png" type="Texture" id=1]
+[ext_resource path="res://src/Actor/Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/Fall_damage_big.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/walk_0.png" type="Texture" id=5]
+[ext_resource path="res://assets/hp.png" type="Texture" id=6]
+[ext_resource path="res://assets/walk_1.png" type="Texture" id=7]
+[ext_resource path="res://assets/12 Bore Gun Sound.mp3" type="AudioStream" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 13, 47 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 18, 52 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 0, -3 )
+collision_mask = 10
+script = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 106, -65 )
+scale = Vector2( 0.0357513, 0.0362934 )
+enabled = false
+texture = ExtResource( 1 )
+color = Color( 0.976471, 0.823529, 0, 1 )
+energy = 2.0
+
+[node name="Player" type="AnimatedSprite" parent="."]
+position = Vector2( 41, -44 )
+scale = Vector2( 0.157743, 0.157743 )
+frames = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, -44 )
+shape = SubResource( 2 )
+
+[node name="ViewNow" type="Camera2D" parent="."]
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -99 )
+current = true
+
+[node name="Label" type="Label" parent="Camera2D"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -29.0
+margin_top = -232.0
+margin_right = 2.0
+margin_bottom = -218.0
+rect_scale = Vector2( 2, 2 )
+text = "Time"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Camera2D"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -25.0
+margin_top = -208.0
+margin_right = 15.0
+margin_bottom = -194.0
+rect_scale = Vector2( 1.3, 1.3 )
+text = "00:00"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Camera2D"]
+margin_left = 397.0
+margin_top = -232.0
+margin_right = 433.0
+margin_bottom = -218.0
+rect_scale = Vector2( 2, 2 )
+text = "Score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Camera2D"]
+margin_left = 404.0
+margin_top = -206.0
+margin_right = 448.0
+margin_bottom = -192.0
+rect_scale = Vector2( 1.3, 1.3 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D"]
+margin_left = -459.0
+margin_top = -224.0
+margin_right = -372.0
+margin_bottom = -196.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.87
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp1" type="Sprite" parent="Camera2D/VBoxContainer"]
+position = Vector2( 14, 14 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 6 )
+
+[node name="hp2" type="Sprite" parent="Camera2D/VBoxContainer"]
+position = Vector2( 43, 14 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 6 )
+
+[node name="hp3" type="Sprite" parent="Camera2D/VBoxContainer"]
+position = Vector2( 71, 14 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1026
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+modulate = Color( 0.0980392, 0, 0.458824, 1 )
+position = Vector2( -1, -43 )
+shape = SubResource( 3 )
+
+[node name="Knockback" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="onFire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -5.0
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

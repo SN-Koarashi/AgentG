@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/slime_walk_0.png" type="Texture" id=1]
+[ext_resource path="res://src/Actor/boss.gd" type="Script" id=2]
+[ext_resource path="res://assets/player.png" type="Texture" id=3]
+[ext_resource path="res://assets/light.png" type="Texture" id=4]
+[ext_resource path="res://assets/Slime_big1.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/slime_walk_1.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 44, 44.4444 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 37.037, 33.1852 )
+
+[node name="Boss" type="KinematicBody2D"]
+position = Vector2( 0, -8 )
+scale = Vector2( 1.5, 1.5 )
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 2 )
+speed = Vector2( 315, 750 )
+
+[node name="boss" type="Sprite" parent="."]
+position = Vector2( -1.19209e-07, -72 )
+scale = Vector2( 1.64236, 1.60417 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="boss2" type="AnimatedSprite" parent="."]
+position = Vector2( -0.474281, -69.3409 )
+rotation = 0.427389
+scale = Vector2( 0.639526, 0.573353 )
+frames = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.666667, -72 )
+scale = Vector2( 1.5, 1.5 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+modulate = Color( 0.854902, 0, 0, 1 )
+position = Vector2( 0, -3.8147e-06 )
+scale = Vector2( 1.5, 1.5 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.444444, -47.1111 )
+scale = Vector2( 1.5, 1.5 )
+shape = SubResource( 3 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -0.666667, -68 )
+scale = Vector2( 0.210937, 0.213542 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="KillSucceed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 5.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

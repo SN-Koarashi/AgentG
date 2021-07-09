@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/run_for_your_life.mp3-3b0c260ef0b77077092f4ee28279d4d9.mp3str"
+
+[deps]
+
+source_file="res://assets/run_for_your_life.mp3"
+dest_files=[ "res://.import/run_for_your_life.mp3-3b0c260ef0b77077092f4ee28279d4d9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

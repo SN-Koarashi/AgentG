@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mighty_giant_run.mp3-a7cdedbedb5368509c4656bfefe9b4fe.mp3str"
+
+[deps]
+
+source_file="res://assets/mighty_giant_run.mp3"
+dest_files=[ "res://.import/mighty_giant_run.mp3-a7cdedbedb5368509c4656bfefe9b4fe.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/12 Bore Gun Sound.mp3-59e0dbf9a8db32225c6c0e8d425233f4.mp3str"
+
+[deps]
+
+source_file="res://assets/12 Bore Gun Sound.mp3"
+dest_files=[ "res://.import/12 Bore Gun Sound.mp3-59e0dbf9a8db32225c6c0e8d425233f4.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

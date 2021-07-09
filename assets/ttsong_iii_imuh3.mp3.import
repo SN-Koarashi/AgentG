@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ttsong_iii_imuh3.mp3-24cc75bee4786cc35a291bde0fad11df.mp3str"
+
+[deps]
+
+source_file="res://assets/ttsong_iii_imuh3.mp3"
+dest_files=[ "res://.import/ttsong_iii_imuh3.mp3-24cc75bee4786cc35a291bde0fad11df.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
