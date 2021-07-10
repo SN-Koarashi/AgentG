@@ -27,6 +27,9 @@ var fire_cooldown = 0
 var fire_cooldown_started = false
 
 func _ready():
+	Globals.eScore = 0
+	Globals.score = 0
+	Globals.time_bonus = 0
 	get_node("Timer").start(1)
 
 func _physics_process(delta: float) -> void:
